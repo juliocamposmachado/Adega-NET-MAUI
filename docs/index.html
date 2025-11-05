@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adega Rádio Tatuapé FM - Aplicativo multiplataforma para delivery de bebidas com integração Uber Direct">
+    <meta name="keywords" content="adega, delivery, bebidas, rock, rádio tatuapé, app android, app windows">
+    <title>Adega Rádio Tatuapé FM - App Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --wine: #722F37;
+            --dark: #0A0A0A;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-400: #9CA3AF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--gray-900) 50%, var(--wine) 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Splash Screen */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--wine) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 0.8s ease-in-out 2.5s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        #splash-logo {
+            font-size: 4rem;
+            color: var(--gold);
+            animation: pulse 1.5s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        #splash-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--gold) 0%, #FFD700 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 2s linear infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        #splash-subtitle {
+            color: var(--gray-400);
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .loading-bar {
+            width: 250px;
+            height: 4px;
+            background: var(--gray-800);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--wine));
+            animation: loading 2.5s ease-in-out;
+            border-radius: 2px;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* Main Content */
+        #main-content {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-in-out 3.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), #FFD700);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--gold), #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray-400);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Download Section */
+        .downloads {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .download-card {
+            background: rgba(31, 41, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--gray-700);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .card-specs {
+            background: rgba(10, 10, 10, 0.5);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .card-specs p {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            margin: 0.5rem 0;
+        }
+
+        /* Features */
+        .features {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .features h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(31, 41, 55, 0.4);
+            border-radius: 12px;
+            border: 1px solid var(--gray-700);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text {
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 2px solid var(--gold);
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--gray-400);
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-800);
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+            }
+
+            #splash-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash">
+        <div id="splash-logo">🍷</div>
+        <div id="splash-title">ADEGA 24 HORAS</div>
+        <div id="splash-subtitle">Rádio Tatuapé FM Express</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🍷</div>
+                    <div class="logo-text">
+                        <h1>Adega Rádio Tatuapé FM</h1>
+                        <p>Express Delivery • .NET MAUI App</p>
+                    </div>
+                </div>
+                <div class="header-buttons">
+                    <a href="https://github.com/juliocamposmachado/Adega-NET-MAUI" class="btn btn-secondary" target="_blank">
+                        📁 GitHub
+                    </a>
+                    <a href="https://radiotatuapefm.radiostream321.com" class="btn btn-primary" target="_blank">
+                        📻 Ouvir Rádio
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Baixe Nosso App</h2>
+            <p>
+                Aplicativo multiplataforma desenvolvido em .NET MAUI com autenticação OAuth2,
+                integração Uber Direct e conformidade total com a LGPD.
+            </p>
+        </section>
+
+        <!-- Download Cards -->
+        <section class="downloads">
+            <!-- Android Card -->
+            <div class="download-card">
+                <div class="card-icon">🤖</div>
+                <h3 class="card-title">Android</h3>
+                <p class="card-description">
+                    APK assinado para instalação direta no seu dispositivo Android.
+                </p>
+                <div class="card-specs">
+                    <p>📱 <strong>Requisitos:</strong> Android 5.0+</p>
+                    <p>💾 <strong>Tamanho:</strong> ~35 MB</p>
+                    <p>🔐 <strong>Versão:</strong> 1.0.0 (MVP Debug)</p>
+                    <p>📦 <strong>Package:</strong> com.companyname.adegaradiotatuape</p>
+                </div>
+                <a href="AdegaRadioTatuapeFM.apk" class="btn btn-primary" style="width: 100%; justify-content: center;" download>
+                    📥 Baixar APK
+                </a>
+            </div>
+
+            <!-- Windows Card -->
+            <div class="download-card">
+                <div class="card-icon">🪟</div>
+                <h3 class="card-title">Windows</h3>
+                <p class="card-description">
+                    Executável standalone com .NET Runtime incluído. Pronto para usar!
+                </p>
+                <div class="card-specs">
+                    <p>💻 <strong>Requisitos:</strong> Win 10 1809+</p>
+                    <p>💾 <strong>Tamanho:</strong> ~83 MB</p>
+                    <p>🔐 <strong>Versão:</strong> 1.0.0 (MVP Debug)</p>
+                    <p>⚙️ <strong>Arquitetura:</strong> x64 (64-bit)</p>
+                </div>
+                <a href="https://github.com/juliocamposmachado/Adega-NET-MAUI/releases" class="btn btn-primary" style="width: 100%; justify-content: center;" target="_blank">
+                    📥 Baixar EXE
+                </a>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <h3>🚀 Recursos do Aplicativo</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🔐</div>
+                    <h4 class="feature-title">OAuth2 Seguro</h4>
+                    <p class="feature-text">Login via Google, Microsoft ou Facebook. Conformidade total com LGPD.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚚</div>
+                    <h4 class="feature-title">Uber Direct</h4>
+                    <p class="feature-text">Entrega rápida com rastreamento em tempo real.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h4 class="feature-title">Multiplataforma</h4>
+                    <p class="feature-text">Um único código para Android, iOS, Windows e Web.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎸</div>
+                    <h4 class="feature-title">Rádio Ao Vivo</h4>
+                    <p class="feature-text">Ouça Classic Rock 24/7 enquanto faz seus pedidos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <!-- Sobre -->
+                <div class="footer-section">
+                    <h4>📍 Adega Rádio Tatuapé FM</h4>
+                    <p>Entrega rápida de bebidas premium</p>
+                    <p><strong>Endereço:</strong><br>Rua Dante Pellacani, 92<br>Tatuapé, São Paulo/SP<br>CEP 03334-070</p>
+                    <p><strong>WhatsApp:</strong> (11) 97060-3441</p>
+                </div>
+
+                <!-- Links -->
+                <div class="footer-section">
+                    <h4>🔗 Links Úteis</h4>
+                    <a href="https://github.com/juliocamposmachado/Adega-NET-MAUI" target="_blank">GitHub Repositório</a>
+                    <a href="https://github.com/juliocamposmachado/Adega-NET-MAUI/blob/main/README.md" target="_blank">Documentação Técnica</a>
+                    <a href="https://github.com/juliocamposmachado/Adega-NET-MAUI/blob/main/PARA_GERENTE_MARCELO.md" target="_blank">Guia de Implementação</a>
+                    <a href="https://radiotatuapefm.radiostream321.com" target="_blank">Ouvir Rádio Ao Vivo</a>
+                </div>
+
+                <!-- Tecnologias -->
+                <div class="footer-section">
+                    <h4>⚙️ Tecnologias Utilizadas</h4>
+                    <div class="footer-tech">
+                        <span class="tech-badge">.NET 9.0</span>
+                        <span class="tech-badge">C# 12</span>
+                        <span class="tech-badge">MAUI</span>
+                        <span class="tech-badge">XAML</span>
+                        <span class="tech-badge">ASP.NET Core</span>
+                        <span class="tech-badge">Entity Framework</span>
+                        <span class="tech-badge">OAuth2</span>
+                        <span class="tech-badge">JWT</span>
+                        <span class="tech-badge">SQL Server</span>
+                    </div>
+                </div>
+
+                <!-- Projeto -->
+                <div class="footer-section">
+                    <h4>👥 Equipe</h4>
+                    <p><strong>Gerente de Projetos:</strong> Marcelo</p>
+                    <p><strong>Desenvolvedor:</strong> Julio Campos Machado</p>
+                    <p><strong>Estudante de:</strong> Gestão Pública<br>Universidade Anhembi Morumbi</p>
+                    <p><strong>Status:</strong> MVP Fase 1 ✅</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>🎸 Desenvolvido com Rock'n'Roll pela Rádio Tatuapé FM • Classic Rock, Hard Rock, Heavy Metal • Desde os anos 80</p>
+                <p style="margin-top: 1rem;">© 2024 Adega Rádio Tatuapé FM Express. Todos os direitos reservados.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">v1.0.0 (MVP - Fase 1) • Debug Build • Arquitetura 3 Camadas • OAuth2 + JWT + SHA256</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
