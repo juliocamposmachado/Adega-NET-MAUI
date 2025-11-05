@@ -8,6 +8,9 @@ Este projeto representa a migração integral para o ecossistema .NET MAUI, unif
 
 ---
 
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/80941e92-6833-4a39-b4a8-73ee97ccfe81" />
+
+
 ## 🎯 Justificativa Técnica da Migração
 
 ### Por que .NET MAUI?
