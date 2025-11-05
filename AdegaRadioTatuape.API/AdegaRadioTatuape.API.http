@@ -1,0 +1,6 @@
+@AdegaRadioTatuape.API_HostAddress = http://localhost:5286
+
+GET {{AdegaRadioTatuape.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
