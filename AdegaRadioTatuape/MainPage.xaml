@@ -1,36 +1,138 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AdegaRadioTatuape.MainPage">
+             x:Class="AdegaRadioTatuape.MainPage"
+             BackgroundColor="#0A0A0A">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+    <Grid RowDefinitions="Auto,*">
+        <!-- Header -->
+        <Frame Grid.Row="0" 
+               BackgroundColor="#111827" 
+               CornerRadius="0"
+               Padding="20"
+               HasShadow="True">
+            <VerticalStackLayout Spacing="5">
+                <Label Text="🍷 Adega Rádio Tatuapé FM"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#D4AF37"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="Express Delivery • 24 Horas"
+                       FontSize="14"
+                       TextColor="#9CA3AF"
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </Frame>
 
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+        <!-- Conteúdo -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="15" Spacing="20">
+                <!-- Loading Indicator -->
+                <ActivityIndicator x:Name="LoadingIndicator"
+                                 IsRunning="True"
+                                 IsVisible="True"
+                                 Color="#D4AF37"
+                                 VerticalOptions="Center"
+                                 HeightRequest="50" />
 
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+                <!-- Mensagem de Erro -->
+                <Label x:Name="ErrorLabel"
+                       IsVisible="False"
+                       Text="Erro ao carregar cardápio"
+                       TextColor="#EF4444"
+                       FontSize="16"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,20" />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
-        </VerticalStackLayout>
-    </ScrollView>
+                <!-- Lista de Categorias -->
+                <CollectionView x:Name="CategoriasCollectionView"
+                              IsVisible="False">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="#1F2937"
+                                   BorderColor="#374151"
+                                   CornerRadius="12"
+                                   Padding="15"
+                                   Margin="0,5"
+                                   HasShadow="False">
+                                <VerticalStackLayout Spacing="10">
+                                    <!-- Categoria Header -->
+                                    <Label Text="{Binding TituloComIcone}"
+                                           FontSize="22"
+                                           FontAttributes="Bold"
+                                           TextColor="#D4AF37" />
+
+                                    <BoxView HeightRequest="2" 
+                                            Color="#374151" />
+
+                                    <!-- Lista de Produtos -->
+                                    <CollectionView ItemsSource="{Binding Produtos}">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame BackgroundColor="#0A0A0A"
+                                                       BorderColor="Transparent"
+                                                       CornerRadius="8"
+                                                       Padding="12"
+                                                       Margin="0,3"
+                                                       HasShadow="False">
+                                                    <Grid ColumnDefinitions="*,Auto" 
+                                                          ColumnSpacing="10">
+                                                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                                            <Label Text="{Binding Nome}"
+                                                                   FontSize="16"
+                                                                   TextColor="White"
+                                                                   FontAttributes="Bold" />
+                                                            <Label Text="{Binding Volume}"
+                                                                   FontSize="12"
+                                                                   TextColor="#9CA3AF" />
+                                                            <Label Text="{Binding StatusEstoque}"
+                                                                   FontSize="11"
+                                                                   TextColor="#10B981" />
+                                                        </VerticalStackLayout>
+
+                                                        <Label Grid.Column="1"
+                                                               Text="{Binding PrecoFormatado}"
+                                                               FontSize="18"
+                                                               FontAttributes="Bold"
+                                                               TextColor="#D4AF37"
+                                                               VerticalTextAlignment="Center" />
+                                                    </Grid>
+                                                </Frame>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Footer Info -->
+                <Frame x:Name="FooterInfo"
+                       IsVisible="False"
+                       BackgroundColor="#722F37"
+                       BorderColor="#D4AF37"
+                       CornerRadius="12"
+                       Padding="15"
+                       Margin="0,10">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="📍 Rua Dante Pellacani, 92 - Tatuapé"
+                               TextColor="White"
+                               FontSize="14" />
+                        <Label Text="📱 WhatsApp: (11) 97060-3441"
+                               TextColor="White"
+                               FontSize="14" />
+                        <Label Text="🚚 Entrega via Uber Direct • 30-45 min"
+                               TextColor="#D4AF37"
+                               FontSize="14"
+                               FontAttributes="Bold" />
+                        <Label Text="💳 Pix, Crédito e Débito"
+                               TextColor="White"
+                               FontSize="14" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 
 </ContentPage>

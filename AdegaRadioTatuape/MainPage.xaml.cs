@@ -1,23 +1,67 @@
-﻿namespace AdegaRadioTatuape;
+using AdegaRadioTatuape.Services;
+using AdegaRadioTatuape.Models;
+
+namespace AdegaRadioTatuape;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	private readonly CardapioService _cardapioService;
 
-	public MainPage()
+	public MainPage(CardapioService cardapioService)
 	{
 		InitializeComponent();
+		_cardapioService = cardapioService;
 	}
 
-	private void OnCounterClicked(object? sender, EventArgs e)
+	protected override async void OnAppearing()
 	{
-		count++;
+		base.OnAppearing();
+		await CarregarCardapio();
+	}
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+	private async Task CarregarCardapio()
+	{
+		try
+		{
+			// Mostra loading
+			LoadingIndicator.IsVisible = true;
+			LoadingIndicator.IsRunning = true;
+			ErrorLabel.IsVisible = false;
+			CategoriasCollectionView.IsVisible = false;
+			FooterInfo.IsVisible = false;
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
+			// Carrega o cardápio
+			var cardapio = await _cardapioService.CarregarCardapioAsync();
+
+			if (cardapio != null && cardapio.Categorias.Any())
+			{
+				// Exibe as categorias
+				CategoriasCollectionView.ItemsSource = cardapio.Categorias;
+				CategoriasCollectionView.IsVisible = true;
+				FooterInfo.IsVisible = true;
+
+				// Log de sucesso
+				System.Diagnostics.Debug.WriteLine($"Cardápio carregado: {cardapio.Categorias.Count} categorias");
+			}
+			else
+			{
+				// Exibe mensagem de erro
+				ErrorLabel.Text = "Nenhum produto disponível no momento";
+				ErrorLabel.IsVisible = true;
+			}
+		}
+		catch (Exception ex)
+		{
+			// Exibe mensagem de erro
+			ErrorLabel.Text = $"Erro ao carregar cardápio: {ex.Message}";
+			ErrorLabel.IsVisible = true;
+			System.Diagnostics.Debug.WriteLine($"Erro: {ex}");
+		}
+		finally
+		{
+			// Esconde loading
+			LoadingIndicator.IsVisible = false;
+			LoadingIndicator.IsRunning = false;
+		}
 	}
 }
