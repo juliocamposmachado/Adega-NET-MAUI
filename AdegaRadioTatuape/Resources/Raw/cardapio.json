@@ -1,0 +1,305 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Cervejas",
+      "icone": "🍺",
+      "produtos": [
+        {
+          "id": 101,
+          "nome": "Heineken Lata 350ml",
+          "preco": 5.90,
+          "volume": "350ml",
+          "imagem": "heineken.jpg",
+          "estoque": 120
+        },
+        {
+          "id": 102,
+          "nome": "Corona Extra",
+          "preco": 8.50,
+          "volume": "355ml",
+          "imagem": "corona.jpg",
+          "estoque": 85
+        },
+        {
+          "id": 103,
+          "nome": "Budweiser Long Neck",
+          "preco": 6.90,
+          "volume": "330ml",
+          "imagem": "budweiser.jpg",
+          "estoque": 95
+        },
+        {
+          "id": 104,
+          "nome": "Stella Artois",
+          "preco": 7.20,
+          "volume": "330ml",
+          "imagem": "stella.jpg",
+          "estoque": 110
+        },
+        {
+          "id": 105,
+          "nome": "Brahma Duplo Malte",
+          "preco": 4.50,
+          "volume": "350ml",
+          "imagem": "brahma.jpg",
+          "estoque": 150
+        },
+        {
+          "id": 106,
+          "nome": "Skol Beats",
+          "preco": 5.90,
+          "volume": "313ml",
+          "imagem": "skol_beats.jpg",
+          "estoque": 78
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Vinhos",
+      "icone": "🍷",
+      "produtos": [
+        {
+          "id": 201,
+          "nome": "Casillero del Diablo Tinto",
+          "preco": 42.90,
+          "volume": "750ml",
+          "imagem": "casillero.jpg",
+          "estoque": 45
+        },
+        {
+          "id": 202,
+          "nome": "Frontera Cabernet",
+          "preco": 29.90,
+          "volume": "750ml",
+          "imagem": "frontera.jpg",
+          "estoque": 62
+        },
+        {
+          "id": 203,
+          "nome": "Santa Helena Reservado",
+          "preco": 35.00,
+          "volume": "750ml",
+          "imagem": "santa_helena.jpg",
+          "estoque": 38
+        },
+        {
+          "id": 204,
+          "nome": "Gato Negro Merlot",
+          "preco": 31.50,
+          "volume": "750ml",
+          "imagem": "gato_negro.jpg",
+          "estoque": 52
+        },
+        {
+          "id": 205,
+          "nome": "Sunrise Branco Suave",
+          "preco": 18.90,
+          "volume": "750ml",
+          "imagem": "sunrise.jpg",
+          "estoque": 70
+        },
+        {
+          "id": 206,
+          "nome": "Almadén Tinto Seco",
+          "preco": 19.90,
+          "volume": "750ml",
+          "imagem": "almaden.jpg",
+          "estoque": 88
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Destilados",
+      "icone": "🥃",
+      "produtos": [
+        {
+          "id": 301,
+          "nome": "Johnnie Walker Red",
+          "preco": 89.90,
+          "volume": "1L",
+          "imagem": "johnnie_red.jpg",
+          "estoque": 32
+        },
+        {
+          "id": 302,
+          "nome": "Jack Daniel's",
+          "preco": 149.90,
+          "volume": "1L",
+          "imagem": "jack_daniels.jpg",
+          "estoque": 28
+        },
+        {
+          "id": 303,
+          "nome": "Absolut Vodka",
+          "preco": 79.90,
+          "volume": "1L",
+          "imagem": "absolut.jpg",
+          "estoque": 41
+        },
+        {
+          "id": 304,
+          "nome": "Smirnoff",
+          "preco": 54.90,
+          "volume": "998ml",
+          "imagem": "smirnoff.jpg",
+          "estoque": 55
+        },
+        {
+          "id": 305,
+          "nome": "Tanqueray Gin",
+          "preco": 119.90,
+          "volume": "750ml",
+          "imagem": "tanqueray.jpg",
+          "estoque": 24
+        },
+        {
+          "id": 306,
+          "nome": "Havana Club 3 Anos",
+          "preco": 69.90,
+          "volume": "750ml",
+          "imagem": "havana.jpg",
+          "estoque": 35
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Energéticos",
+      "icone": "⚡",
+      "produtos": [
+        {
+          "id": 401,
+          "nome": "Red Bull",
+          "preco": 11.90,
+          "volume": "250ml",
+          "imagem": "redbull.jpg",
+          "estoque": 180
+        },
+        {
+          "id": 402,
+          "nome": "Monster Energy",
+          "preco": 12.50,
+          "volume": "473ml",
+          "imagem": "monster.jpg",
+          "estoque": 145
+        },
+        {
+          "id": 403,
+          "nome": "TNT Energy",
+          "preco": 4.90,
+          "volume": "269ml",
+          "imagem": "tnt.jpg",
+          "estoque": 220
+        },
+        {
+          "id": 404,
+          "nome": "Burn Energy",
+          "preco": 6.50,
+          "volume": "260ml",
+          "imagem": "burn.jpg",
+          "estoque": 165
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Refrigerantes",
+      "icone": "🥤",
+      "produtos": [
+        {
+          "id": 501,
+          "nome": "Coca-Cola",
+          "preco": 9.90,
+          "volume": "2L",
+          "imagem": "coca.jpg",
+          "estoque": 200
+        },
+        {
+          "id": 502,
+          "nome": "Guaraná Antarctica",
+          "preco": 8.90,
+          "volume": "2L",
+          "imagem": "guarana.jpg",
+          "estoque": 185
+        },
+        {
+          "id": 503,
+          "nome": "Sprite Lata",
+          "preco": 3.50,
+          "volume": "350ml",
+          "imagem": "sprite.jpg",
+          "estoque": 240
+        },
+        {
+          "id": 504,
+          "nome": "Fanta Laranja",
+          "preco": 8.50,
+          "volume": "2L",
+          "imagem": "fanta.jpg",
+          "estoque": 170
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Águas & Sucos",
+      "icone": "💧",
+      "produtos": [
+        {
+          "id": 601,
+          "nome": "Água Crystal",
+          "preco": 2.50,
+          "volume": "500ml",
+          "imagem": "crystal.jpg",
+          "estoque": 300
+        },
+        {
+          "id": 602,
+          "nome": "Água Com Gás Perrier",
+          "preco": 6.90,
+          "volume": "330ml",
+          "imagem": "perrier.jpg",
+          "estoque": 95
+        },
+        {
+          "id": 603,
+          "nome": "Del Valle (Diversos)",
+          "preco": 7.90,
+          "volume": "1L",
+          "imagem": "delvalle.jpg",
+          "estoque": 125
+        },
+        {
+          "id": 604,
+          "nome": "Água de Coco Kero",
+          "preco": 8.50,
+          "volume": "1L",
+          "imagem": "kero.jpg",
+          "estoque": 105
+        }
+      ]
+    }
+  ],
+  "informacoes": {
+    "formas_pagamento": [
+      "Pix",
+      "Cartão de Crédito",
+      "Cartão de Débito"
+    ],
+    "entrega": {
+      "tipo": "Uber Direct",
+      "tempo_medio": "30-45 minutos",
+      "taxa_entrega": 5.00
+    },
+    "horario_funcionamento": "24 horas",
+    "contato": {
+      "whatsapp": "11970603441",
+      "endereco": "Rua Dante Pellacani, 92 - Tatuapé, São Paulo/SP",
+      "cep": "03334-070"
+    }
+  }
+}
+

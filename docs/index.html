@@ -320,6 +320,78 @@
             line-height: 1.6;
         }
 
+        /* Menu Styles */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-category {
+            background: rgba(31, 41, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--gray-700);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .menu-category:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gray-700);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+        }
+
+        .category-header h4 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(10, 10, 10, 0.4);
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background: rgba(10, 10, 10, 0.7);
+        }
+
+        .item-name {
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .item-price {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
         /* Footer */
         footer {
             background: rgba(10, 10, 10, 0.95);
@@ -472,6 +544,196 @@
                 <a href="https://github.com/juliocamposmachado/Adega-NET-MAUI/releases" class="btn btn-primary" style="width: 100%; justify-content: center;" target="_blank">
                     📥 Baixar EXE
                 </a>
+            </div>
+        </section>
+
+        <!-- Cardápio -->
+        <section class="features">
+            <h3>🍺 Nosso Cardápio</h3>
+            <div class="menu-grid">
+                <!-- Cervejas -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span class="category-icon">🍺</span>
+                        <h4>Cervejas</h4>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Heineken Lata 350ml</span>
+                            <span class="item-price">R$ 5,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Corona Extra 355ml</span>
+                            <span class="item-price">R$ 8,50</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Budweiser Long Neck</span>
+                            <span class="item-price">R$ 6,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Stella Artois 330ml</span>
+                            <span class="item-price">R$ 7,20</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Brahma Duplo Malte</span>
+                            <span class="item-price">R$ 4,50</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Skol Beats 313ml</span>
+                            <span class="item-price">R$ 5,90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vinhos -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span class="category-icon">🍷</span>
+                        <h4>Vinhos</h4>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Casillero del Diablo Tinto</span>
+                            <span class="item-price">R$ 42,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Frontera Cabernet 750ml</span>
+                            <span class="item-price">R$ 29,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Santa Helena Reservado</span>
+                            <span class="item-price">R$ 35,00</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Gato Negro Merlot 750ml</span>
+                            <span class="item-price">R$ 31,50</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Sunrise Branco Suave</span>
+                            <span class="item-price">R$ 18,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Almadén Tinto Seco 750ml</span>
+                            <span class="item-price">R$ 19,90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destilados -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span class="category-icon">🥃</span>
+                        <h4>Destilados</h4>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Johnnie Walker Red 1L</span>
+                            <span class="item-price">R$ 89,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Jack Daniel's 1L</span>
+                            <span class="item-price">R$ 149,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Absolut Vodka 1L</span>
+                            <span class="item-price">R$ 79,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Smirnoff 998ml</span>
+                            <span class="item-price">R$ 54,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Tanqueray Gin 750ml</span>
+                            <span class="item-price">R$ 119,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Havana Club 3 Anos 750ml</span>
+                            <span class="item-price">R$ 69,90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Energéticos -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span class="category-icon">⚡</span>
+                        <h4>Energéticos</h4>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Red Bull 250ml</span>
+                            <span class="item-price">R$ 11,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Monster Energy 473ml</span>
+                            <span class="item-price">R$ 12,50</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">TNT Energy 269ml</span>
+                            <span class="item-price">R$ 4,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Burn Energy 260ml</span>
+                            <span class="item-price">R$ 6,50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refrigerantes -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span class="category-icon">🥤</span>
+                        <h4>Refrigerantes</h4>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Coca-Cola 2L</span>
+                            <span class="item-price">R$ 9,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Guaraná Antarctica 2L</span>
+                            <span class="item-price">R$ 8,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Sprite Lata 350ml</span>
+                            <span class="item-price">R$ 3,50</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Fanta Laranja 2L</span>
+                            <span class="item-price">R$ 8,50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Águas e Sucos -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span class="category-icon">💧</span>
+                        <h4>Águas & Sucos</h4>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <span class="item-name">Água Crystal 500ml</span>
+                            <span class="item-price">R$ 2,50</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Água Com Gás Perrier</span>
+                            <span class="item-price">R$ 6,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Del Valle 1L (Diversos)</span>
+                            <span class="item-price">R$ 7,90</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Água de Coco Kero 1L</span>
+                            <span class="item-price">R$ 8,50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="color: var(--gray-400); font-size: 1.1rem; margin-bottom: 1rem;">💳 Aceitamos Pix, Cartão de Crédito e Débito</p>
+                <p style="color: var(--gold); font-size: 1.2rem; font-weight: bold;">🚚 Entrega via Uber Direct • Tempo médio: 30-45 minutos</p>
             </div>
         </section>
 
